@@ -9,23 +9,37 @@
 </head>
 
 <body id="body">
+ 
+ <div id="time">Time left:<span id="timer">0</span></div>
+
+ <div id="start">
+  <h1>Welcome to my quiz</h1>
+  <button id="startBtn">start</button>
+ </div>
 
  <!-- All content of the quiz-->
- <div>
-  <div id="quiz" class="content-container">
+
+  <div id="quiz" class="hide">
+   <h2 id="questTitle"></h2>
+   <div id="choices"></div>
   </div>
+
+
+  
+  <!-- Hight scores -->
+  <div id="finalScreen" class="hide">
+   <h2>Game Over</h2>
+   <p>your final score is: <span id="finalScore"></span></p>
+   <p>Initials: <input type="text" id="initials" /></p>
+   <button id="submit-btn">Submit</button>
+   <button id="restart-btn">Restart Quiz</button>
  </div>
 
- <button id="submit-btn">Submit</button>
+ 
 
- <!-- Hight scores -->
- <div>
-  <button class="display-score">High Score</button>
- </div>
 
  <!-- Timer -->
- <div id="time">Time left:<span id="timer">0</span></div>
- <script src="./assets/js/script.js"></script>  
+ <script src="assets/js/homepage.js"></script>  
  </body>
  
 </body>
