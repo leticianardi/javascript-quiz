@@ -1,6 +1,6 @@
 // variables for JS
 var startContainer = document.getElementById("start");
-var startBtn = document.getElementById("startBtn");
+var startBtn = document.getElementById("start-btn");
 var quizContainer = document.getElementById("quiz");
 var answerContainer = document.getElementById("choices");
 var finalScreenContainer = document.getElementById("finalScreen");
@@ -11,6 +11,7 @@ var scoreContainer = document.getElementById("finalScore");
 var submitBtn = document.getElementById("submit-btn");
 var restartBtn = document.getElementById("restart-btn");
 var questionIndex = 0;
+var nameInput = document.getElementById("initials");
 
 // question function
 var questionsQuiz = [
@@ -89,6 +90,8 @@ function askQ() {
 }
 
 function userChoice() {
+  // message from correct and wrong answer
+
   //use the event listener "this" tp capture what the user is clicking
   if (this.value !== questionsQuiz[questionIndex].correctAnswer) {
     //deduct 5 secs
@@ -97,18 +100,17 @@ function userChoice() {
 
   timerEl.textContent = time;
 
-
   questionIndex++;
 
-  //if we run out of questions game over if not ask the next question
+  //if we run out of questions, game over; if not, ask the next question
   if (questionIndex === questionsQuiz.length) {
-    endGame();
+    endQuiz();
   } else {
     askQ();
   }
 }
 
-function endGame() {
+function endQuiz() {
   //stop the timer
   clearInterval(timer);
 
@@ -124,7 +126,10 @@ function endGame() {
 
 // high score function
 function showScore() {
- //get value of initals user inputs
+  // event.preventDefault();
+
+  //get value of initals user inputs
+  document.querySelector("nameInput").value;
 
  //run a check to see if there are any scores in local storage or make it return an empty array and save as a score array variable
 
