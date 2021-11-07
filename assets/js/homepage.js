@@ -124,16 +124,29 @@ function endQuiz() {
   scoreContainer.textContent = time;
 }
 
+// Save score
+function saveScore() {
+  var saveScores = JSON.stringify(
+  
+  );
+    window.localStorage.setItem("finalScore", saveScores);
+    console.log(saveScores);
+}
+
 // high score function
 function showScore() {
-  // event.preventDefault();
 
   //get value of initals user inputs
   document.querySelector("nameInput").value;
 
  //run a check to see if there are any scores in local storage or make it return an empty array and save as a score array variable
-
+  if (saveScore !==null) {
+    saveScore = 
+  }
  //format the time and intials in an object
+ var saveScores = JSON.stringify(highScores);
+ var 
+
 
  //push the new score into the score array variable
 
