@@ -1,17 +1,26 @@
-// variables for JS
-var startContainer = document.getElementById("start");
+// variables
+var timeCounter = 0;
+var countdown = null;
+var bodyContainerEl = document.getElementById("body");
+// bodyContainerEl.addEventListener("click", clickAction);
+// var startContainer = document.getElementById("start");
 var startBtn = document.getElementById("start-btn");
 var quizContainer = document.getElementById("quiz");
 var answerContainer = document.getElementById("choices");
 var finalScreenContainer = document.getElementById("finalScreen");
-var time = 75;
+// var time = 75;
 var timerEl = document.getElementById("timer");
 var timer;
 var scoreContainer = document.getElementById("finalScore");
+var highScores = [];
+var inQuiz = false;
 var submitBtn = document.getElementById("submit-btn");
 var restartBtn = document.getElementById("restart-btn");
 var questionIndex = 0;
 var nameInput = document.getElementById("initials");
+
+getSavedScores();
+runQuiz();
 
 // question function
 var questionsQuiz = [
@@ -36,6 +45,50 @@ var questionsQuiz = [
     correctAnswer: "Sheryl Sandberg",
   },
 ];
+
+// quiz rules
+function quizRules() {
+  var contentHolderEl = createContentHolder();
+  
+  var headingEl = document.createElement("h1");
+  headingEl.innerText = "JavaScript Quiz";
+  headingEl.className = "rule-text";
+  
+  var rule1El = document.createElement("p");
+  rule1El.innerText = "Are you ready for our quiz?";
+  rule1El.className = "rule-text";
+  
+  var rule2El = document.createElement("p");
+  rule2El.innerText = "You have just 1 minute to answer 5 questions.";
+  rule2El.className = "rule-text";
+  
+  var rule3El = document.createElement("p");
+  rule3El.innerText = "You loose 10 seconds for each wrong answer.";
+  rule3El.className = "rule-text";
+  
+  var rule4El = document.createElement("p");
+  rule4El.innerText = "Good luck!";
+  rule4El.className = "rule-text";
+  
+  var buttonContainerEl = document.createElement("p");
+  buttonContainerEl.className = "rule-text";
+  
+  var startQuizButtonEl = document.createElement("button");
+  startQuizButtonEl.innerText = "Start Quiz";
+  startQuizButtonEl.className = "start-quiz";
+  
+  buttonContainerEl.appendChild(startQuizButtonEl);
+  
+  contentHolderEl.appendChild(headingEl);
+  contentHolderEl.appendChild(rule1El);
+  contentHolderEl.appendChild(rule2El);
+  contentHolderEl.appendChild(rule3El);
+  contentHolderEl.appendChild(rule4El);
+  contentHolderEl.appendChild(buttonContainerEl);
+  
+  contentContainerEl.appendChild(contentHolderEl);
+}
+
 
 // questions function
 function runQuiz() {
@@ -126,23 +179,38 @@ function endQuiz() {
 
 // Save score
 function saveScore() {
-  var saveScores = JSON.stringify(
-  
-  );
+  var saveScores = JSON.stringify(highScores);
     window.localStorage.setItem("finalScore", saveScores);
     console.log(saveScores);
 }
 
-// high score function
+// insert name in high score
 function showScore() {
+  var quizContainerEl = document.getElementById("quiz");
+  
+  if (quizContainerEl) {
+    var nameInputEl = getElementById("initials");
+    if (nameInputEl) {
+      var input =  document.querySelector("nameInput").value;
+      if (input) {
+        clearContainer();
+        var tempScores = [];
+
+        var currScore = {
+            initials: input,
+            score: timeCounter
+        }
+      }
+    }
+  }
 
   //get value of initals user inputs
   document.querySelector("nameInput").value;
 
- //run a check to see if there are any scores in local storage or make it return an empty array and save as a score array variable
-  if (saveScore !==null) {
-    saveScore = 
-  }
+ //check for scores in local storage or return an empty array and save as a score array variable
+  // if (saveScore !==null) {
+  //   saveScore = 
+  // }
  //format the time and intials in an object
  var saveScores = JSON.stringify(highScores);
  var 
@@ -151,11 +219,14 @@ function showScore() {
  //push the new score into the score array variable
 
  //save that new score in local storage
-}
+
 
 // run the quiz
 
 
 startBtn.addEventListener("click", runQuiz);
+console.log(" start btn funciona")
 // show results on submit
 submitBtn.addEventListener("click", showScore);
+
+runQuiz();
